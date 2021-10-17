@@ -54,9 +54,54 @@ INCOME_AMT had 9 different groups with the largest group having income=0 (24388)
 
 INCOME_AMT was recoded for _some_ of the final attempts. Categories were replaced with a numeric reverse-rank system wherein the 0 income category = 0, 1-9999=1, ... 50M+=8, such that lower numbers in the recoding indicated lower levels of income and higher numbers in the recoding indicated higher levels of income. Recoding in this way is conceptually sound as the categories are representative of actual numeric values and also reduced the number of columns that resulted from one-hot encoding.  
 
+ASK_AMT for some model attempts, applications with requests over $100M were removed from the dataset. This resulted in 101 applications being dropped from the dataset (0.29% of original data & thus acceptable amount of outliers to be excluded).
+
+*_Optimization Attempt 2: remove applications asking >$100M; other parameters same as initial model_ (slight improvement from previous models)
+[img: /images/optimize_2_model.png]
+This model outperformed the previous models slightly, with final accuracy of 0.744 & loss of 0.531 [img: images/optimize_2_fit.png]. Performance on the testing data was similar to the previous models. [img: images/optimize_2_test.png]
+
+*_Optimization Attempt 3: same as Optimization 2 + removing STATUS & SPECIAL_CONSIDERATIONS_* (similar to initial model)
+Due to minimal variation in the STATUS & SPECIAL_CONSIDERATION categories, they were removed from dataset. 
+[img /images/status.png][img: /images/spec_con.png] This resulted in 40 columns for the training array.
+[img: /images/optimize_3_model.png]
+Model fit looked very similar to the first 2 models that were run, hovering around 0.74 accuracy & 0.53 loss.
+[img: /images/optimize_3_mode.png] Data testing was similar to previous models. [img: /images/optimize_3_test.png]
+
+*_Optimization Attempt 4 (fit accuracy > 0.75)_
+* Preprocessing:
+- In a hunch related to prior assignments & the instructions, I kept the EIN column--I know that conceptually, I shouldn't, but there have been other assignments where the ID numbers had easter eggs of sorts.
+- Dropped: NAME, STATUS, SPECIAL_CONSIDERATIONS
+- INCOME_AMT converted to the reverse-rank system discussed earlier
+- APPLICATION_TYPE & CLASSIFICATION processed in same way as all other runs
+- ASK_AMT all applications were included
+- 33 columns in training set
+
+* Model:
+- increased units on 2nd hidden layer
+- added 3rd hidden layer
+[img: /images/optimize_4_model.png]
+- all other options related to compiling & training matched previous models
+
+* Results:
+- 0.7500 accuracy on Epoch 62/100 [img: /images/optimize_4_epoch62.png]
+- oscillated for awhile
+- final accuracy 0.753 & loss 0.51 [img: /images/optimize_4_fit.png]
+- testing slightly better [img: /images/optimize_4_test.png]
 
 
+*_Optimization Attempt 5 (fit accuracy 0.755); identical to Optimization 4, but removed >$100M_
+Removing applications above $100M made slight improvement over previous model.
+
+* Results:
+- 0.7505 accuracy on Epoch 55/100 [img: /images/optimize_5_epoch55.png]
+- oscillated for awhile
+- final accuracy 0.755 & loss 0.506 [img: /images/optimize_5_fit.png]
+- testing similar to other models [img: /images/optimize_5_test.png]
 
 
 
 3. **Summary**: Summarize the overall results of the deep learning model. Include a recommendation for how a different model could solve this classification problem, and explain your recommendation.
+
+In general, cracking the 75% threshhold was not easy. If I were to run more models (which I may just to see what happens), I would start with the data & parameters used in either Optimization 4 or 5 (only difference is whether >$100M is in or out of the set) and remove the EIN column. Adding the additional neuron layer was also a confound that I should not have done at the same time as switching out some of the variables, but I was getting a bit impatient and just wanted to try some stuff. So with that in mind, there's no way to know whether the additional layer or the variable changes were more important to the model change. 
+
+Because this is a classification problem, other methods that might be considered include: logistic regression, k-nearest neighbors, decision tree classification, and random forest classification. 
