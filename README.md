@@ -104,4 +104,6 @@ Removing applications above $100M made slight improvement over previous model.
 
 In general, cracking the 75% threshhold was not easy. If I were to run more models (which I may just to see what happens), I would start with the data & parameters used in either Optimization 4 or 5 (only difference is whether >$100M is in or out of the set) and remove the EIN column. Adding the additional neuron layer was also a confound that I should not have done at the same time as switching out some of the variables, but I was getting a bit impatient and just wanted to try some stuff. So with that in mind, there's no way to know whether the additional layer or the variable changes were more important to the model change. 
 
-Because this is a classification problem, other methods that might be considered include: logistic regression, k-nearest neighbors, decision tree classification, and random forest classification. 
+Being able to ensure that conglomerate groups are conceptually meaningful/related might also improve the model. Good data can make a big difference in statistical analyses.
+
+Because this is a classification problem, other methods that might be considered include: logistic regression, k-nearest neighbors, decision tree classification, and random forest classification. Of these, logistic regression & k-nearest neighbors tend to be the easier to explain, so I'd probably attempt one of those first. 
