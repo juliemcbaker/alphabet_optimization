@@ -41,14 +41,22 @@ The model was compiled with these parameters: (loss="binary_crossentropy", optim
 * _Optimization Attempt 1: Added neuron layer (did not improve the model)_
 An additional dense neuron layer with 20 units & relu activation was added to the previous model. [/images/optimize_1_model.png] All other parameters and methods remained the same as the initial trial. As with the previous model, accuracy hovered around 0.74 and loss was between 0.53 and 0.54. [/images/optimize_1_fit.png] Performance on the testing dataset were almost identical to the initial model. [/images/optimize_1_test.png]
 
-*_Additional Data Exploration_*
+*_Additional Data Exploration_
+Factors that had not been changed in the original preprocessing were investigated to see if creating additional bins might be useful. 
+
+AFFILIATION was found to be largely either Independent (18480) or CompanySponsored (15705). The remaining categories were very sparse: Family/Parent (64), National (33), Regional (13), & Other (4). Lumping all of the remaining categories together was considered, but rejected because conceptually, the Family/Parent group seemed different than the others. This may be an option to consider for future models. [!/images/affiliation_ask.png]
+
+USE_CASE was heavily Preservation (28095), followed by ProductDev (5671). The remaining categories were much smaller: CommunityServ (384), Heathcare (146), & Other (3). While commuity service & health care seem conceptually similar if you assume the goal of health is to help others, comparisons between ASK_AMT of these groups suggested they might not be similar in nature. [img /images/usecase_ask.png]
+
+ORGANIZATION had 4 groups: Trust (23515), Association (10255), Co-operative (486), & Corporation (43). Due to conceptual differences between co-operative and corporation they were not merged into a single group. This seems like a case where knowing more about the definitions of what these labels mean might have allowed adding the smaller groups to either of the larger ones. [img: /images/oragnization_ask.png]
+
+INCOME_AMT had 9 different groups with the largest group having income=0 (24388). The remaining categories in order of income were: 1-9999 (728), 10000-24999 (543), 25000-99999 (3747), 100000-499999 (3374), 1M-5M (955), 5M-10M (185), 10M-50M (240), 50M+ (139). This is a clear case where grouping lower use categories together could lead to conceptually meaningless categories if not considering the meaning of the categories. [img: /images/income_ask.png] 
+
+INCOME_AMT was recoded for _some_ of the final attempts. Categories were replaced with a numeric reverse-rank system wherein the 0 income category = 0, 1-9999=1, ... 50M+=8, such that lower numbers in the recoding indicated lower levels of income and higher numbers in the recoding indicated higher levels of income. Recoding in this way is conceptually sound as the categories are representative of actual numeric values and also reduced the number of columns that resulted from one-hot encoding.  
 
 
 
 
 
-* Were you able to achieve the target model performance?
-
-* What steps did you take to try and increase model performance?
 
 3. **Summary**: Summarize the overall results of the deep learning model. Include a recommendation for how a different model could solve this classification problem, and explain your recommendation.
