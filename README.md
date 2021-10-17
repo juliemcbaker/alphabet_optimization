@@ -30,15 +30,18 @@ The training array had 25724 rows of data with 42 columns.
 ** _Compiling, Training, and Evaluating the Model_**
 
 * How many neurons, layers, and activation functions did you select for your neural network model, and why?
-* Initial Model
+* _Initial Model (did not reach 75% threshold)_
 The initial model used nodes, layers, & activation functions were chosen to be consistent with in-class activities.
 Specifically, it was a sequential model with 3 dense layers with hidden layers using 'relu' activation and the output layer using 'sigmoid' activation. [/images/initial_model.png] 
 
 The model was compiled with these parameters: (loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"]) based on in-class activities. Callbacks were set to record every 5 iterations and the model ran for 100 epochs. The model leveled off relatively early with accuracy ~ 0.74 & loss ~0.54. [/images/initial_model_fit.png] Performance on the testing dataset were slightly worse (accuracy ~ 0.73 & loss ~ 0.56). [/images/initial_model_test.png]
 
-Though, close, the initial model did not exceed the desired threshold of 75% accuracy. Attempts to optimize the model will now be discussed.
+**Though, close, the initial model did not exceed the desired threshold of 75% accuracy. Attempts to optimize the model will now be discussed.**
 
+* _Optimization Attempt 1: Added neuron layer (did not improve the model)_
+An additional dense neuron layer with 20 units & relu activation was added to the previous model. [/images/optimize_1_model.png] All other parameters and methods remained the same as the initial trial. As with the previous model, accuracy hovered around 0.74 and loss was between 0.53 and 0.54. [/images/optimize_1_fit.png] Performance on the testing dataset were almost identical to the initial model. [/images/optimize_1_test.png]
 
+*_Additional Data Exploration_*
 
 
 
