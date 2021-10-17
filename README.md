@@ -32,7 +32,7 @@ The training array had 25724 rows of data with 42 columns.
 * How many neurons, layers, and activation functions did you select for your neural network model, and why?
 * _Initial Model (did not reach 75% threshold)_
 The initial model used nodes, layers, & activation functions were chosen to be consistent with in-class activities.
-Specifically, it was a sequential model with 3 dense layers with hidden layers using 'relu' activation and the output layer using 'sigmoid' activation. [/images/initial_model.png] 
+Specifically, it was a sequential model with 3 dense layers with hidden layers using 'relu' activation and the output layer using 'sigmoid' activation. ![initial_model](https://user-images.githubusercontent.com/83370545/137649489-8cb8c742-7d58-4c9a-a618-daf77f22d651.png)
 
 The model was compiled with these parameters: (loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"]) based on in-class activities. Callbacks were set to record every 5 iterations and the model ran for 100 epochs. The model leveled off relatively early with accuracy ~ 0.74 & loss ~0.54. [/images/initial_model_fit.png] Performance on the testing dataset were slightly worse (accuracy ~ 0.73 & loss ~ 0.56). [/images/initial_model_test.png]
 
