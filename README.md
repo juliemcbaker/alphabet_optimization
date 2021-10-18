@@ -47,15 +47,40 @@ The training array had 25724 rows of data with 42 columns.
  * performance on the testing dataset slightly worse (accuracy ~ 0.73 & loss ~ 0.56)
  * ![initial_model_test](https://user-images.githubusercontent.com/83370545/137651410-0fcdab89-4c3c-49cb-9de3-7bd539b69808.png)
  
-**Though, close, the initial model did not exceed the desired threshold of 75% accuracy. Attempts to optimize the model will now be discussed.**
+Though, close, the initial model did not exceed the desired threshold of 75% accuracy. Attempts to optimize the model will now be discussed.
 
-* _Optimization Attempt 1: Added neuron layer (did not improve the model)_
-An additional dense neuron layer with 20 units & relu activation was added to the previous model. [/images/optimize_1_model.png] All other parameters and methods remained the same as the initial trial. As with the previous model, accuracy hovered around 0.74 and loss was between 0.53 and 0.54. [/images/optimize_1_fit.png] Performance on the testing dataset were almost identical to the initial model. [/images/optimize_1_test.png]
+-----------------
+## Optimization Attempts
 
-*_Additional Data Exploration_
+### *_Optimization Attempt 1: Added neuron layer_* (did not improve the model)
+
+* additional dense neuron layer with 20 units & relu activation added to the previous model
+* ![optimize_1_model](https://user-images.githubusercontent.com/83370545/137651555-ee595f9e-cd19-4215-8743-f2ea872173bf.png)
+* other parameters and methods same as initial trial
+
+* RESULTS:
+ * like previous model 
+  * accuracy hovered around 0.74
+  * loss was between 0.53 and 0.54
+  * ![optimize_1_fit](https://user-images.githubusercontent.com/83370545/137651629-926b3fa8-d5bd-43e7-824c-d242faf06b5e.png)
+ * Performance on the testing dataset were almost identical to the initial model
+  * ![optimize_1_test](https://user-images.githubusercontent.com/83370545/137651661-8dbd25ca-cfa9-47cc-b792-91d65acc7d0d.png)
+
+
+### *_Additional Data Exploration_*
 Factors that had not been changed in the original preprocessing were investigated to see if creating additional bins might be useful. 
 
-AFFILIATION was found to be largely either Independent (18480) or CompanySponsored (15705). The remaining categories were very sparse: Family/Parent (64), National (33), Regional (13), & Other (4). Lumping all of the remaining categories together was considered, but rejected because conceptually, the Family/Parent group seemed different than the others. This may be an option to consider for future models. [!/images/affiliation_ask.png]
+AFFILIATION: 
+* largely either Independent (18480) or CompanySponsored (15705)
+* remaining categories very sparse: 
+ * Family/Parent (64)
+ * National (33)
+ * Regional (13)
+ * Other (4). 
+* Lumping all of the remaining categories together was considered
+ * but rejected because conceptually Family/Parent group seemed different than the others
+ * may be an option to consider for future models.![affiliation_ask](https://user-images.githubusercontent.com/83370545/137651823-72de3333-1cb7-42d4-a9d7-af04edeeb124.png)
+ 
 
 USE_CASE was heavily Preservation (28095), followed by ProductDev (5671). The remaining categories were much smaller: CommunityServ (384), Heathcare (146), & Other (3). While commuity service & health care seem conceptually similar if you assume the goal of health is to help others, comparisons between ASK_AMT of these groups suggested they might not be similar in nature. [img /images/usecase_ask.png]
 
