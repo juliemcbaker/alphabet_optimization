@@ -12,20 +12,22 @@ The data contained information about 34,299 applications received by Alphabet So
 
 * Model features (options per category): APPLICATION_TYPE (17), AFFILIATION (6), CLASSIFICATION(71), USE_CASE(5), ORGANIZATION(4), STATUS(2), INCOME_AMT(9), SPECIAL_CONSIDERATIONS(2), ASK_AMT(8747)
 
-* Data transformations:
+### Data transformations:
 The volume of options in both APPLICATION_TYPE & CLASSIFICATION required grouping some of the less populated categories with each other. Without having additional information about application types and classification categories, these aggregations were based solely on numbers. Ideally, having more information about what the types & classifications actually mean might allow for more meaningful aggregation--for instance, grouping small categories with larger ones that might be conceptually similar rather than just grouping all of the small categories together. I believe that type of information could lead to better model options.  
 
-APPLICATION_TYPE was reduced from 17 categories to 9--8 categories that each had >500 applications & an 'Other' category to capture the remaining 276 applications.
+* APPLICATION_TYPE was reduced from 17 categories to 9--8 categories that each had >500 applications & an 'Other' category to capture the remaining 276 applications.
+* CLASSIFICATION was reduced from 71 categories to 6--5 categories that each had >1800 application & an 'Other' category to capture the remaining 2261 applications.
+* Of the factors, only STATUS & ASK_AMT were numeric, thus all other factors were one-hot encoded via .get_dummies, resulting in a dataframe with 44 columns. 
+* SPECIAL_CONSIDERATIONS split into 2 columns SPECIAL_CONSIDERATIONS_Y & SPECIAL_CONSIDERATIONS_N, because Y/N is binary in nature, keeping both columns was redundant & thus SPECIAL_CONSIDERATIONS_N was dropped from the dataframe. 
 
-CLASSIFICATION was reduced from 71 categories to 6--5 categories that each had >1800 application & an 'Other' category to capture the remaining 2261 applications.
-
-Of the factors, only STATUS & ASK_AMT were numeric, thus all other factors were one-hot encoded via .get_dummies, resulting in a dataframe with 44 columns. SPECIAL_CONSIDERATIONS split into 2 columns SPECIAL_CONSIDERATIONS_Y & SPECIAL_CONSIDERATIONS_N, because Y/N is binary in nature, keeping both columns was redundant & thus SPECIAL_CONSIDERATIONS_N was dropped from the dataframe. 
-
-Data was then split & scaled for the modeling process. IS_SUCCESSFUL was saved as the y-variable for the model & test and removed from the larger array of prediction factors. The default proportions for the train_test_split method were used. After splitting data, the factor arrays were scaled using the StandardScaler() method.
+Data was then split & scaled for the modeling process. 
+* IS_SUCCESSFUL was saved as the y-variable for the model & test and removed from the larger array of prediction factors. 
+* The default proportions for the train_test_split method were used. 
+* After splitting data, the factor arrays were scaled using the StandardScaler() method.
 
 The training array had 25724 rows of data with 42 columns.
 
-** _Compiling, Training, and Evaluating the Model_**
+## ** _Compiling, Training, and Evaluating the Model_**
 
 * How many neurons, layers, and activation functions did you select for your neural network model, and why?
 * _Initial Model (did not reach 75% threshold)_
