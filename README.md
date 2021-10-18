@@ -78,23 +78,68 @@ AFFILIATION:
   * Regional (13)
   * Other (4) 
 * Lumping all of the remaining categories together was considered
-  * but rejected because conceptually Family/Parent group seemed different than the others
-  * may be an option to consider for future models.![affiliation_ask](https://user-images.githubusercontent.com/83370545/137651823-72de3333-1cb7-42d4-a9d7-af04edeeb124.png)
+  * but rejected because conceptually Family/Parent group seemed different than the others, particularly when looking at ask_amt
+  * ![affiliation_ask](https://user-images.githubusercontent.com/83370545/137651823-72de3333-1cb7-42d4-a9d7-af04edeeb124.png)
+  * may be an option to consider for future models
  
 
-USE_CASE was heavily Preservation (28095), followed by ProductDev (5671). The remaining categories were much smaller: CommunityServ (384), Heathcare (146), & Other (3). While commuity service & health care seem conceptually similar if you assume the goal of health is to help others, comparisons between ASK_AMT of these groups suggested they might not be similar in nature. [img /images/usecase_ask.png]
+USE_CASE: 
+* was heavily Preservation (28095) & ProductDev (5671)
+* remaining categories were much smaller: 
+  * CommunityServ (384)
+  * Heathcare (146)
+  * Other (3)
+* commuity service & health care seem conceptually similar, BUT comparisons between ASK_AMT of these groups suggested they might not be 
+  * ![usecase_ask](https://user-images.githubusercontent.com/83370545/137652192-123833cb-bd42-42be-95bc-dd6888e965f0.png)
 
-ORGANIZATION had 4 groups: Trust (23515), Association (10255), Co-operative (486), & Corporation (43). Due to conceptual differences between co-operative and corporation they were not merged into a single group. This seems like a case where knowing more about the definitions of what these labels mean might have allowed adding the smaller groups to either of the larger ones. [img: /images/oragnization_ask.png]
 
-INCOME_AMT had 9 different groups with the largest group having income=0 (24388). The remaining categories in order of income were: 1-9999 (728), 10000-24999 (543), 25000-99999 (3747), 100000-499999 (3374), 1M-5M (955), 5M-10M (185), 10M-50M (240), 50M+ (139). This is a clear case where grouping lower use categories together could lead to conceptually meaningless categories if not considering the meaning of the categories. [img: /images/income_ask.png] 
+ORGANIZATION:
+* mostly Trust (23515) & Association (10255)
+* smaller groups: Co-operative (486), & Corporation (43)
+  * due to conceptual differences between co-operative and corporation merging into a single group not considered
+* seems like a case where knowing more about the definitions of what these labels mean might have allowed adding the smaller groups to either of the larger ones 
+* ![oraganization_ask](https://user-images.githubusercontent.com/83370545/137652302-767c5be5-d54b-4280-bae5-4642671f01f1.png)
 
-INCOME_AMT was recoded for _some_ of the final attempts. Categories were replaced with a numeric reverse-rank system wherein the 0 income category = 0, 1-9999=1, ... 50M+=8, such that lower numbers in the recoding indicated lower levels of income and higher numbers in the recoding indicated higher levels of income. Recoding in this way is conceptually sound as the categories are representative of actual numeric values and also reduced the number of columns that resulted from one-hot encoding.  
 
-ASK_AMT for some model attempts, applications with requests over $100M were removed from the dataset. This resulted in 101 applications being dropped from the dataset (0.29% of original data & thus acceptable amount of outliers to be excluded).
+INCOME_AMT:
+* 9 groups
+  * largest group income=0 (24388)
+  * 1-9999 (728)
+  * 10000-24999 (543)
+  * 25000-99999 (3747)
+  * 100000-499999 (3374)
+  * 1M-5M (955)
+  * 5M-10M (185)
+  * 10M-50M (240)
+  * 50M+ (139) 
+* clear case where combining smaller groups together _could_ lead to conceptually meaningless categories if the actual meaning of the categories is not considered 
+* ![income_ask](https://user-images.githubusercontent.com/83370545/137652548-2d2c7d10-83ef-4404-acd0-d6a22b6a8ee5.png)
 
-*_Optimization Attempt 2: remove applications asking >$100M; other parameters same as initial model_ (slight improvement from previous models)
-[img: /images/optimize_2_model.png]
-This model outperformed the previous models slightly, with final accuracy of 0.744 & loss of 0.531 [img: images/optimize_2_fit.png]. Performance on the testing data was similar to the previous models. [img: images/optimize_2_test.png]
+* RECODED for _some_ of the final models
+  * categories replaced with a numeric reverse-rank system 
+    * wherein the 0 income category = 0, 1-9999=1, ... 50M+=8
+    * lower numbers in the recoding indicated lower levels of income
+    * higher numbers in the recoding indicated higher levels of income
+  * recoding in this way is conceptually sound
+    * categories are representative of actual numeric values
+    * reduced the number of columns that resulted from one-hot encoding  
+
+ASK_AMT: 
+* for some models: 
+  * applications with requests over $100M were removed from the dataset
+  * resulted in 101 applications being dropped from the dataset 
+  * 0.29% of original data & thus acceptable amount of outliers to be excluded
+
+
+
+### *_Optimization Attempt 2: remove applications asking >$100M; other parameters same as initial model_* (slight improvement from previous models)
+* ![optimize_2_model](https://user-images.githubusercontent.com/83370545/137652793-7d1e7ef5-a675-4986-a5ae-050225ffa3b1.png)
+* outperformed the previous models slightly
+  * fit accuracy of 0.744 & loss of 0.531 
+  * ![optimize_2_fit](https://user-images.githubusercontent.com/83370545/137652829-85ee2ef6-59fc-47fa-9e32-d8bf9107a125.png)
+* performance on the testing data similar to previous models
+  * ![optimize_2_test](https://user-images.githubusercontent.com/83370545/137652865-03698799-7018-4b26-a290-dd59b442ca7d.png)
+
 
 *_Optimization Attempt 3: same as Optimization 2 + removing STATUS & SPECIAL_CONSIDERATIONS_* (similar to initial model)
 Due to minimal variation in the STATUS & SPECIAL_CONSIDERATION categories, they were removed from dataset. 
