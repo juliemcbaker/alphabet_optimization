@@ -141,14 +141,19 @@ ASK_AMT:
   * ![optimize_2_test](https://user-images.githubusercontent.com/83370545/137652865-03698799-7018-4b26-a290-dd59b442ca7d.png)
 
 
-*_Optimization Attempt 3: same as Optimization 2 + removing STATUS & SPECIAL_CONSIDERATIONS_* (similar to initial model)
-Due to minimal variation in the STATUS & SPECIAL_CONSIDERATION categories, they were removed from dataset. 
-[img /images/status.png][img: /images/spec_con.png] This resulted in 40 columns for the training array.
-[img: /images/optimize_3_model.png]
-Model fit looked very similar to the first 2 models that were run, hovering around 0.74 accuracy & 0.53 loss.
-[img: /images/optimize_3_mode.png] Data testing was similar to previous models. [img: /images/optimize_3_test.png]
+### *_Optimization Attempt 3: same as Optimization 2 + removing STATUS & SPECIAL_CONSIDERATIONS_* (similar to initial model)
+* Due to minimal variation, STATUS & SPECIAL_CONSIDERATION removed from dataset
+  *  ![status](https://user-images.githubusercontent.com/83370545/137652986-cf1c90d6-2aed-4047-b7fc-11df63d6bbb8.png)
+  *  ![spec_con](https://user-images.githubusercontent.com/83370545/137652997-6f335400-cc43-46ad-82e2-282342d2f0aa.png)
+* resulted in 40 columns for the training array.
+  * ![optimize_3_model](https://user-images.githubusercontent.com/83370545/137653019-e6419a36-195c-49de-aef6-e2a903173673.png)
+* model fit very similar to first 2 models, hovering around 0.74 accuracy & 0.53 loss.
+  * ![optimize_3_fit](https://user-images.githubusercontent.com/83370545/137653062-85d385c2-0ba3-4893-8317-ceb9a8e4b318.png)
+* testing results similar to previous models
+  * ![optimize_3_test](https://user-images.githubusercontent.com/83370545/137653090-e8a513e8-7957-4a79-b3b1-3c191c0cbfaf.png)
 
-*_Optimization Attempt 4 (fit accuracy > 0.75)_
+
+### *_Optimization Attempt 4_* (fit accuracy > 0.75)
 * Preprocessing:
 - In a hunch related to prior assignments & the instructions, I kept the EIN column--I know that conceptually, I shouldn't, but there have been other assignments where the ID numbers had easter eggs of sorts.
 - Dropped: NAME, STATUS, SPECIAL_CONSIDERATIONS
