@@ -1,11 +1,10 @@
 # alphabet_optimization
 
 **Overview**
+
 The goal of this analysis was to create an algorithm for the Alphabet Soup foundation to try to predict whether applicants to their program will be successful with their funding. 
-
-**Results**
-
-** _Initial Data Preprocessing_**
+--------------------------------------------------------------
+** Initial Data Preprocessing**
 The data contained information about 34,299 applications received by Alphabet Soup. In addition to 2 identification columns (EIN & NAME), there were 10 other factors included in the dataset (APPLICATION_TYPE, AFFILIATION, CLASSIFICATION, USE_CASE, ORGANIZATION, STATUS, INCOME_AMT, SPECIAL_CONSIDERATIONS, ASK_AMT, & IS_SUCCESSFUL). 
 
 * Seemingly irrelevant info (& thus removed early in preprocessing): EIN & NAME
