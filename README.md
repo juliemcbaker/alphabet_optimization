@@ -154,39 +154,49 @@ ASK_AMT:
 
 
 ### *_Optimization Attempt 4_* (fit accuracy > 0.75)
+
 * Preprocessing:
-- In a hunch related to prior assignments & the instructions, I kept the EIN column--I know that conceptually, I shouldn't, but there have been other assignments where the ID numbers had easter eggs of sorts.
-- Dropped: NAME, STATUS, SPECIAL_CONSIDERATIONS
-- INCOME_AMT converted to the reverse-rank system discussed earlier
-- APPLICATION_TYPE & CLASSIFICATION processed in same way as all other runs
-- ASK_AMT all applications were included
-- 33 columns in training set
+  - kept EIN column
+    - hunch related to prior assignments & the instructions
+    - I know that conceptually, I shouldn't, but other assignments had ID numbers as easter eggs of sorts
+  - Dropped: NAME, STATUS, SPECIAL_CONSIDERATIONS
+  - INCOME_AMT converted to the reverse-rank system discussed earlier
+  - APPLICATION_TYPE & CLASSIFICATION processed in same way as all other runs
+  - ASK_AMT all applications were included
+  - 33 columns in training set
 
 * Model:
-- increased units on 2nd hidden layer
-- added 3rd hidden layer
-[img: /images/optimize_4_model.png]
-- all other options related to compiling & training matched previous models
+  - increased units on 2nd hidden layer
+  - added 3rd hidden layer
+    - ![optimize_4_model](https://user-images.githubusercontent.com/83370545/137653336-b0819759-7d4d-4953-a45f-cf75624b57b4.png)
+  - all other options related to compiling & training matched previous models
 
 * Results:
-- 0.7500 accuracy on Epoch 62/100 [img: /images/optimize_4_epoch62.png]
-- oscillated for awhile
-- final accuracy 0.753 & loss 0.51 [img: /images/optimize_4_fit.png]
-- testing slightly better [img: /images/optimize_4_test.png]
+  - 0.7500 accuracy on Epoch 62/100 
+    - ![optimize_4_epoch62](https://user-images.githubusercontent.com/83370545/137653384-28bbffe5-bb8e-4d9b-96e2-3c7aa91f391f.png)
+  - oscillated for awhile
+  - final accuracy 0.753 & loss 0.51 
+    - ![optimize_4_fit](https://user-images.githubusercontent.com/83370545/137653412-8b05fbc4-7473-4662-9ed5-83818f9d2f5a.png)
+  - testing slightly better 
+    - ![optimize_4_test](https://user-images.githubusercontent.com/83370545/137653430-c8629523-1c72-4389-8dce-f15437804ec4.png)
 
 
-*_Optimization Attempt 5 (fit accuracy 0.755); identical to Optimization 4, but removed >$100M_
+### *_Optimization Attempt 5 (fit accuracy 0.755); identical to Optimization 4, but removed >$100M_*
+
 Removing applications above $100M made slight improvement over previous model.
 
 * Results:
-- 0.7505 accuracy on Epoch 55/100 [img: /images/optimize_5_epoch55.png]
-- oscillated for awhile
-- final accuracy 0.755 & loss 0.506 [img: /images/optimize_5_fit.png]
-- testing similar to other models [img: /images/optimize_5_test.png]
+  - 0.7505 accuracy on Epoch 55/100 
+    - ![optimize_5_epoch55](https://user-images.githubusercontent.com/83370545/137653471-ee849d6b-3da8-4310-87bf-ddf34a1ddeb4.png)
+  - oscillated for awhile
+  - final accuracy 0.755 & loss 0.506 
+    - ![optimize_5_fit](https://user-images.githubusercontent.com/83370545/137653495-e88d497b-91d3-4b80-a822-e65232faac30.png)
+  - testing similar to other models
+    - ![optimize_5_test](https://user-images.githubusercontent.com/83370545/137653561-207e2f1a-a6f2-4e28-b49b-f32e0cec4560.png)
 
+-----------------------------------
 
-
-3. **Summary**: Summarize the overall results of the deep learning model. Include a recommendation for how a different model could solve this classification problem, and explain your recommendation.
+## **Summary** 
 
 In general, cracking the 75% threshhold was not easy. If I were to run more models (which I may just to see what happens), I would start with the data & parameters used in either Optimization 4 or 5 (only difference is whether >$100M is in or out of the set) and remove the EIN column. Adding the additional neuron layer was also a confound that I should not have done at the same time as switching out some of the variables, but I was getting a bit impatient and just wanted to try some stuff. So with that in mind, there's no way to know whether the additional layer or the variable changes were more important to the model change. 
 
