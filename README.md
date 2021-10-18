@@ -38,14 +38,14 @@ The training array had 25724 rows of data with 42 columns.
   *  output layer using 'sigmoid' activation. 
   * ![initial_model](https://user-images.githubusercontent.com/83370545/137649489-8cb8c742-7d58-4c9a-a618-daf77f22d651.png)
 * additionally:
- * compiled with: (loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"]) based on in-class activities 
- * callbacks recorded every 5 iterations 
- * model ran for 100 epochs
+  * compiled with: (loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"]) based on in-class activities 
+  * callbacks recorded every 5 iterations 
+  * model ran for 100 epochs
 * RESULTS:
- * model leveled off relatively early with accuracy ~ 0.74 & loss ~0.54. 
- * ![initial_model_fit](https://user-images.githubusercontent.com/83370545/137651381-78c14bd3-fb34-468c-97bb-222a798939cf.png)
- * performance on the testing dataset slightly worse (accuracy ~ 0.73 & loss ~ 0.56)
- * ![initial_model_test](https://user-images.githubusercontent.com/83370545/137651410-0fcdab89-4c3c-49cb-9de3-7bd539b69808.png)
+  * model leveled off relatively early with accuracy ~ 0.74 & loss ~0.54. 
+  * ![initial_model_fit](https://user-images.githubusercontent.com/83370545/137651381-78c14bd3-fb34-468c-97bb-222a798939cf.png)
+  * performance on the testing dataset slightly worse (accuracy ~ 0.73 & loss ~ 0.56)
+  * ![initial_model_test](https://user-images.githubusercontent.com/83370545/137651410-0fcdab89-4c3c-49cb-9de3-7bd539b69808.png)
  
 Though, close, the initial model did not exceed the desired threshold of 75% accuracy. Attempts to optimize the model will now be discussed.
 
@@ -59,12 +59,12 @@ Though, close, the initial model did not exceed the desired threshold of 75% acc
 * other parameters and methods same as initial trial
 
 * RESULTS:
- * like previous model 
-  * accuracy hovered around 0.74
-  * loss was between 0.53 and 0.54
-  * ![optimize_1_fit](https://user-images.githubusercontent.com/83370545/137651629-926b3fa8-d5bd-43e7-824c-d242faf06b5e.png)
+  * like previous model 
+    * accuracy hovered around 0.74
+    * loss was between 0.53 and 0.54
+    * ![optimize_1_fit](https://user-images.githubusercontent.com/83370545/137651629-926b3fa8-d5bd-43e7-824c-d242faf06b5e.png)
  * Performance on the testing dataset were almost identical to the initial model
-  * ![optimize_1_test](https://user-images.githubusercontent.com/83370545/137651661-8dbd25ca-cfa9-47cc-b792-91d65acc7d0d.png)
+    * ![optimize_1_test](https://user-images.githubusercontent.com/83370545/137651661-8dbd25ca-cfa9-47cc-b792-91d65acc7d0d.png)
 
 
 ### *_Additional Data Exploration_*
