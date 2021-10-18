@@ -26,19 +26,27 @@ Data was then split & scaled for the modeling process.
 * After splitting data, the factor arrays were scaled using the StandardScaler() method.
 
 The training array had 25724 rows of data with 42 columns.
+
 --------------------------------------------
 ## **Compiling, Training, and Evaluating the Model**
 
-### *_Initial Model (did not reach 75% threshold)_*
+### *_Initial Model_* (did not reach 75% threshold)
 * initial model used nodes, layers, & activation functions consistent with in-class activities
 * specifically: 
   *  sequential model with 3 dense layers 
   *  hidden layers using 'relu' activation
   *  output layer using 'sigmoid' activation. 
   * ![initial_model](https://user-images.githubusercontent.com/83370545/137649489-8cb8c742-7d58-4c9a-a618-daf77f22d651.png)
-
-The model was compiled with these parameters: (loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"]) based on in-class activities. Callbacks were set to record every 5 iterations and the model ran for 100 epochs. The model leveled off relatively early with accuracy ~ 0.74 & loss ~0.54. [/images/initial_model_fit.png] Performance on the testing dataset were slightly worse (accuracy ~ 0.73 & loss ~ 0.56). [/images/initial_model_test.png]
-
+* additionally:
+ * compiled with: (loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"]) based on in-class activities 
+ * callbacks recorded every 5 iterations 
+ * model ran for 100 epochs
+* RESULTS:
+ * model leveled off relatively early with accuracy ~ 0.74 & loss ~0.54. 
+ * ![initial_model_fit](https://user-images.githubusercontent.com/83370545/137651381-78c14bd3-fb34-468c-97bb-222a798939cf.png)
+ * performance on the testing dataset slightly worse (accuracy ~ 0.73 & loss ~ 0.56)
+ * ![initial_model_test](https://user-images.githubusercontent.com/83370545/137651410-0fcdab89-4c3c-49cb-9de3-7bd539b69808.png)
+ 
 **Though, close, the initial model did not exceed the desired threshold of 75% accuracy. Attempts to optimize the model will now be discussed.**
 
 * _Optimization Attempt 1: Added neuron layer (did not improve the model)_
