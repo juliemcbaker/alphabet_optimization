@@ -73,13 +73,13 @@ Factors that had not been changed in the original preprocessing were investigate
 AFFILIATION: 
 * largely either Independent (18480) or CompanySponsored (15705)
 * remaining categories very sparse: 
- * Family/Parent (64)
- * National (33)
- * Regional (13)
- * Other (4). 
+  * Family/Parent (64)
+  * National (33)
+  * Regional (13)
+  * Other (4) 
 * Lumping all of the remaining categories together was considered
- * but rejected because conceptually Family/Parent group seemed different than the others
- * may be an option to consider for future models.![affiliation_ask](https://user-images.githubusercontent.com/83370545/137651823-72de3333-1cb7-42d4-a9d7-af04edeeb124.png)
+  * but rejected because conceptually Family/Parent group seemed different than the others
+  * may be an option to consider for future models.![affiliation_ask](https://user-images.githubusercontent.com/83370545/137651823-72de3333-1cb7-42d4-a9d7-af04edeeb124.png)
  
 
 USE_CASE was heavily Preservation (28095), followed by ProductDev (5671). The remaining categories were much smaller: CommunityServ (384), Heathcare (146), & Other (3). While commuity service & health care seem conceptually similar if you assume the goal of health is to help others, comparisons between ASK_AMT of these groups suggested they might not be similar in nature. [img /images/usecase_ask.png]
