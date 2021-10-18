@@ -183,7 +183,7 @@ ASK_AMT:
 
 ### *_Optimization Attempt 5 (fit accuracy 0.755); identical to Optimization 4, but removed >$100M_*
 
-Removing applications above $100M made slight improvement over previous model.
+Removing applications above $100M made slight improvement over previous model with regard to fit accuracy, but slightly worse test accuracy.
 
 * Results:
   - 0.7505 accuracy on Epoch 55/100 
