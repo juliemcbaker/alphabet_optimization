@@ -1,6 +1,6 @@
 # alphabet_optimization
 
-##**Overview**
+## **Overview**
 * The goal of this analysis was to create an algorithm for the Alphabet Soup foundation to try to predict whether applicants to their program will be successful with their funding.
 --------------------------------------------------------------
 ## **Initial Data Preprocessing**
